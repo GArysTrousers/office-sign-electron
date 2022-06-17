@@ -106,6 +106,7 @@
 <style>
 	main {
 		height: 100vh;
+		cursor: none;
 		@apply text-white flex flex-col justify-center items-center text-center whitespace-pre-wrap;
 	}
 
