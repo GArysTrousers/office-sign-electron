@@ -15,6 +15,17 @@ const port = process.env.PORT || 3000;
 const dev = !app.isPackaged;
 let mainWindow;
 
+var AutoLaunch = require('auto-launch');
+var autoLauncher = new AutoLaunch({
+    name: "Office Sign"
+});
+autoLauncher.isEnabled().then(function(isEnabled) {
+  if (isEnabled) return;
+   autoLauncher.enable();
+}).catch(function (err) {
+  throw err;
+});
+
 function createWindow() {
   let windowState = windowStateManager({
     defaultWidth: 800,

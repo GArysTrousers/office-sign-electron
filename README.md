@@ -1,34 +1,34 @@
-<p align="center">
-  <img src="static/sveltekit-electron.svg" />
-</p>
+# Office Sign
+Electron edition
 
-# Sveltekit + Electron
+## Features
+- Different statuses (Open, Closed, etc) 
+- Adjustable timer ⏲️
+- Timer triggered changes ⚡
+- Launch on Startup
 
-Minimal [Sveltekit](https://github.com/sveltejs/kit#readme) + [Electron](https://www.electronjs.org/) starter template.
+## Customising
+The business logic is located at /src/routes/index.svelte
 
-<br />
+You'll find an array called 'messages' you can add to.
 
-## Getting Started
-> *Feel free to substitute `npm` with `pnpm` or `yarn`.
+The message object looks like:
+```
+{
+  title: '',          <- BIG TEXT
+  body: '',           <- small text
+  bg: '',             <- Classes to add to the back panel
+  onStart: () => {},  <- Function to run when switched to
+  onTimeout: () => {},<- Function to run when timer runs out
+  onEnd: () => {},    <- Function to run when switched from
+}
+```
 
-|         |                                             |
-| ------- | ------------------------------------------- |
-| Clone   | · `npx degit fractalhq/sveltekit-electron ` |
-| Install | · `npm install`                             |
-| Develop | · `npm run dev`                             |
-| Build   | · `npm run build`                           |
-
-
-<br />
-
-<p align="center">
-  <img src="screenshot.png" />
-</p>
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Svelte for VSCode](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)
-
-## Change Build Targets
-
-In the scripts section of package.json you can update the `build:electron` command and change the flags to set the targets, by default it uses  `-mwl` which is Mac, Windows, and Linux
+## Building
+Open the root directory in a terminal and run:
+```
+npm i
+npm run dev   <- to test program
+npm run build <- to build installer
+```
+Installer will be located at ./dist/Office Sign Setup x.x.x.exe
