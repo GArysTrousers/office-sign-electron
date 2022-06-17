@@ -11,6 +11,8 @@ It can dispay configurable messages and timers.
 - Timer triggered changes ⚡
 - Launch on Startup 🌅
 
+![Open and Closed](etc/screen1.png)
+
 ## Customising
 The business logic is located at /src/routes/index.svelte
 
