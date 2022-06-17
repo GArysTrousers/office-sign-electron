@@ -1,11 +1,15 @@
 # Office Sign
 Electron edition
 
+This is an electron version of my digital office sign.
+
+It can dispay configurable messages and timers.
+
 ## Features
 - Different statuses (Open, Closed, etc) 
 - Adjustable timer ⏲️
 - Timer triggered changes ⚡
-- Launch on Startup
+- Launch on Startup 🌅
 
 ## Customising
 The business logic is located at /src/routes/index.svelte
