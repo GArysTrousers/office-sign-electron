@@ -13,6 +13,13 @@ It can dispay configurable messages and timers.
 
 ![Open and Closed](etc/screen1.png)
 
+## Controls
+- Number Keys 0-9: Switch between messages
+- Spacebar: Add 10 mins or start 10 min timer
+- Backspace: Reset timer
+- Escape: Exit app
+- F11: toggle Fullscreen
+
 ## Customising
 The business logic is located at /src/routes/index.svelte
 
