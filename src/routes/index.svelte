@@ -2,16 +2,16 @@
 	import type { Message } from 'src/lib/interfaces';
 	import { onMount } from 'svelte';
 
-	export let messages: Message[] = [
-		{
-			title: 'ICT is Closed\nfor the day',
-			body: '',
+	export let messages: { [name: string]: Message } = {
+		'0': {
+			title: `ICT has powered down for the day`,
+			body: `We'll be back in the morning`,
 			bg: 'bg-black',
 			onStart: () => {},
 			onTimeout: () => {},
 			onEnd: () => {},
 		},
-		{
+		'1': {
 			title: 'ICT is Open',
 			body: 'Turn handle &#8634;',
 			bg: 'bg-green-700',
@@ -19,7 +19,7 @@
 			onTimeout: () => {},
 			onEnd: () => {},
 		},
-		{
+		'2': {
 			title: 'ICT is Closed',
 			body: 'Check back later \n-or-\n see Junior ICT',
 			bg: 'bg-red-700',
@@ -27,15 +27,15 @@
 			onTimeout: () => {},
 			onEnd: () => {},
 		},
-		{
+		'3': {
 			title: 'ICT is Closed',
 			body: 'Check back in:',
 			bg: 'bg-red-700',
-			onStart: () => addTime(60 * 30),
-			onTimeout: () => changeMessage(4),
+			onStart: () => addTime(60 * 10),
+			onTimeout: () => changeMessage('4'),
 			onEnd: () => {},
 		},
-		{
+		'4': {
 			title: 'ICT will be back shortly',
 			body: '',
 			bg: 'bg-yellow-600',
@@ -43,15 +43,23 @@
 			onTimeout: () => {},
 			onEnd: () => {},
 		},
-	];
+		'9': {
+			title: 'ICT is Closed\nfor the day',
+			body: '',
+			bg: 'bg-black',
+			onStart: () => {},
+			onTimeout: () => {},
+			onEnd: () => {},
+		},
+	};
 
-	let selected = messages[1];
+	let selected: Message = messages['1'];
 	let timer: any;
 	let timeLeft: number = 0;
 
 	onMount(async () => {});
 
-	function changeMessage(index: number) {
+	function changeMessage(index: string) {
 		stopTimer();
 		selected.onEnd();
 		selected = messages[index];
@@ -80,10 +88,8 @@
 	}
 
 	function onKeyDown(e: KeyboardEvent) {
-		let num = e.keyCode - 48;
-		if (num >= 0 && num <= 9) {
-			if (num < messages.length) changeMessage(num);
-			return;
+		if (e.key in messages) {
+			changeMessage(e.key);
 		}
 		if (e.key == ' ') addTime(600);
 		else if (e.key == 'Backspace') stopTimer();
