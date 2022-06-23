@@ -23,11 +23,11 @@ It can dispay configurable messages and timers.
 ## Customising
 The business logic is located at /src/routes/index.svelte
 
-You'll find an array called 'messages' you can add to.
+You'll find an object called 'messages' you can add to.
 
 The message object looks like:
 ```
-{
+'keyEvent.key': {     <- key press to switch to message
   title: '',          <- BIG TEXT
   body: '',           <- small text
   bg: '',             <- Classes to add to the back panel
